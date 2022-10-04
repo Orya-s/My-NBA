@@ -1,4 +1,3 @@
-from distutils.log import warn
 import requests
 
 
@@ -9,11 +8,15 @@ class API:
         self.headers={"Content-Type": "application/json"}
 
 
-    def call_api(attempts = 0):
-        pass
+    def call_api(self, attempts = 0):
+        try:
+            r = requests.get(self.url).json()
+            return r
+        except Exception as e:
+            self.error_handler(self.call_api, attempts, e)       
             
             
-    def error_handler(method, attempts, error):
+    def error_handler(self, method, attempts, error):
         attempts += 1
         if(attempts < 3):
             print(f"Attempt number {attempts}")
@@ -24,8 +27,7 @@ class API:
         
       
     def get_data(self):
-        response = requests.get(self.url, self.headers)
-        return response.json()
+        return self.proccess_data(self.call_api())
 
 
     def proccess_data(self):
