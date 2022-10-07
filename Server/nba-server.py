@@ -2,31 +2,17 @@ from fastapi import FastAPI, Response
 import uvicorn
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-import requests
-import os
 
 from nba_api import NbaAPI
 
 app = FastAPI()
 
-
-# static files      - should be at the top of the file!
-# first parameter - sub-path for the route, if we want to reach a file example.txt that is found in
-# the static folder, it’s route will be /static/example.txt
-# second parameter - the StaticFiles function, we pass it a directory="static" keyword argument to 
-# specify the directory of the static files 
 # example - localhost:8000/static/view.jpg
-
-# app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/Client", StaticFiles(directory="Client"), name="Client")
 
 
-
 @app.get('/')
-def root(response: Response):
-    response.headers['Access-Control-Allow-Origin'] = "*"
-    api = NbaAPI("lakers", 2018)
-    print(api.headers)
+def root():
     return {"message":"Server is up and running"}
 
 
@@ -37,13 +23,11 @@ async def favicon():
     # return FileResponse(path=file_path, headers={"Content-Disposition": "attachment; filename=" + file_name})
 
 
-@app.get('/search')
-def get_players():
-    data = NbaAPI("warriors","2018").get_data()
+@app.get('/search')     # ex - localhost:8000/search?teamName=warriors&year=2018
+def get_players(response: Response, teamName="warriors", year="2018"):
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    data = NbaAPI(teamName, year).get_data()
     return data
-    # return {"msg":"Players"}
-
-
 
 
 
