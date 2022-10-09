@@ -5,7 +5,9 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Balthazar"rel="stylesheet"/> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    
+    <link id="favicon" rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css"/>
+
 </head>
 
   <body>
@@ -17,14 +19,25 @@
       <button>GET TEAM</button>
     </div>
 
+    <div class="container">
+      
+    </div>
 
+
+
+
+    <script id="template" type="text/x-handlebars-template">
+      <div>{{msg}}</div>
+    </script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
 
-    <script src="static/page-view.js"></script>
-    <script src="static/nba-data.js"></script>
-    <script src="static/page-controller.js"></script>
+    <script src="./static/nbaData.js"></script>
+    <script src="./static/pageView.js"></script>
+    <script src="./static/pageController.js"></script>
+
   </body>
 </html>
