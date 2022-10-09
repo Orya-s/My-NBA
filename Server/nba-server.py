@@ -24,11 +24,13 @@ async def favicon():
 def get_players(response: Response, teamName="warriors", year="2018"):
     response.headers['Access-Control-Allow-Origin'] = "*"
     data = NbaAPI(teamName, year).get_data()
+    
+    print("server running")
     return data
 
 
-# example - localhost:8000/static/view.jpg
-app.mount("/", StaticFiles(directory="Client",html=True), name="Client")
+# example - localhost:8000/static/index.html
+app.mount("/", StaticFiles(directory="../Client",html=True), name="Client")
 
 
 if __name__ == "__main__":
