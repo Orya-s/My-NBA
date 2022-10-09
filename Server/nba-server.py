@@ -7,11 +7,8 @@ from nba_api import NbaAPI
 
 app = FastAPI()
 
-# example - localhost:8000/static/view.jpg
-app.mount("/Client", StaticFiles(directory="Client"), name="Client")
 
-
-@app.get('/')
+@app.get('/sanity')
 def root():
     return {"message":"Server is up and running"}
 
@@ -29,6 +26,9 @@ def get_players(response: Response, teamName="warriors", year="2018"):
     data = NbaAPI(teamName, year).get_data()
     return data
 
+
+# example - localhost:8000/static/view.jpg
+app.mount("/", StaticFiles(directory="Client",html=True), name="Client")
 
 
 if __name__ == "__main__":
