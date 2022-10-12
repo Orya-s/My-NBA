@@ -1,11 +1,27 @@
 /* Renderer Module
 Renderer is a class which should render each section of the user page through Handlebars (and jQuery). 
 */
-print("view")
 
-const source = $('#template').html();
-const template = Handlebars.compile(source);
-const newHTML = template({msg:"hiiii"}); 
 
-// append our new html to the page
-$('.container').append(newHTML);
+const nbaRender = function() {
+
+    function renderPlayers(players) {
+        // console.log(players);
+        $(".cards-container").empty();
+
+        const source = $('#cards-template').html();
+        const template = Handlebars.compile(source);
+        const newHTML = template(players); 
+        $('.cards-container').append(newHTML);
+    }
+
+    function renderPictures() {
+
+    }
+
+
+    return {
+        renderPlayers,
+        renderPictures
+    }
+}
