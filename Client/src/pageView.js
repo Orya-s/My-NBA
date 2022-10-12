@@ -6,7 +6,6 @@ Renderer is a class which should render each section of the user page through Ha
 const nbaRender = function() {
 
     function renderPlayers(players) {
-        // console.log(players);
         $(".cards-container").empty();
 
         const source = $('#cards-template').html();
@@ -15,13 +14,28 @@ const nbaRender = function() {
         $('.cards-container').append(newHTML);
     }
 
-    function renderPictures() {
-
+    function renderPictures(metaData) {
+        for (const player of metaData) {
+			let elementToRender = `#${player.id}`
+			// let newHTML = `<img src=${player.img} onerror="this.src='https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png';" alt="not found" />`
+		
+            let newHTML = `<img src=${player.img} onerror="this.src='https://ih1.redbubble.net/image.1756031065.8725/flat,128x,075,f-pad,128x128,f8f8f8.jpg';" alt="not found" />`
+			$(elementToRender).empty()
+			$(elementToRender).append(newHTML)
+		}
     }
 
+    function headline(year, team) {
+        $(".cards-container").prepend(`<div> Showing results for team <b>${team}</b> - <b>${year}</b> </div> <br>`)
+    }
+
+    function rendCards(res) {
+        renderPlayers(res)  
+        renderPictures(res.metaData)
+    }
 
     return {
-        renderPlayers,
-        renderPictures
+        headline,
+        rendCards
     }
 }
