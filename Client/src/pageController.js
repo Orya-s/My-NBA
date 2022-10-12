@@ -19,7 +19,8 @@ $("#getTeamBtn").on("click", function() {
         nbaPlayers.init(year, team);
         nbaPlayers.getData().then((res) => {
             cleanInput()
-            rendPage.renderPlayers(res)
+            rendPage.rendCards(res)
+            rendPage.headline(year, team)
             return res
         })
     }
