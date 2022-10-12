@@ -1,5 +1,5 @@
 from api import API
-
+from img_api import ImgAPI
 
 teams_id = {
     "lakers": "1610612747",
@@ -28,15 +28,17 @@ class NbaAPI(API):
                     {"fname": player["firstName"],
                     "lname":player["lastName"],
                     "jersey":player["jersey"],
-                    "position":player["pos"]}
+                    "position":player["pos"],
+                    "img": ImgAPI(player["lastName"], player["firstName"]).url
+                    }
                     for player in leagues[league] if bool(player["isActive"]) == True and player["teamId"] == self.team]
             
             for i in range(len(players)):
                 players[i]["id"]= f"card{i}"
             self.data = players
             return players 
+        
         except Exception as e:
             print("Could not proccess data")
             raise e
-       
        
