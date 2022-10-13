@@ -12,37 +12,45 @@
 
   <body>
     
-    <div id="search-bar">
-      <input id="teamInput" placeholder="TEAM NAME">
-      <input id="yearInput" placeholder="YEAR">
-      <button id="getTeamBtn">GET TEAM</button>
+    <div class="header">
+      <div class="text-input">
+        <input id="teamInput" type="text" placeholder="TEAM">
+        <input id="yearInput" list="years" placeholder="YEAR">
+      </div>
+      <button id="getTeamBtn" class="glow-on-hover">GET TEAM</button>
     </div>
+
+    <datalist id="years">
+      <option value="2017"></option>
+      <option value="2018"></option>
+      <option value="2019"></option>
+      <option value="2020"></option>
+      <option value="2021"></option>
+      <option value="2022"></option>
+    </datalist>
 
 
     <!-- Handlebars Containers -->
     <div class="cards-container">
     </div>
 
+    <div class="title-container">
+    </div>
     
 
-    
+  
     
     <!-- Handlebars Templates -->
     
     <script id="cards-template" type="text/x-handlebars-template">
-      
-      {{#each metaData}}
-      
+      {{#each players}}
         <div class="cards">
-          <div>{{this.fname}} {{this.lname}}</div>
-          <div>{{this.jersey}} </div>
-          <!-- <img src={{this.img}}> -->
-          <div>{{this.position}} </div>
-
+          <div class="fullName"><b>{{this.fname}} {{this.lname}}</b></div>
+          <div class="jersey">{{this.jersey}}</div>
+          <div class="img" id={{this.id}}></div>
+          <div class="position"><b>{{this.position}}</b></div>
         </div>
-      
       {{/each}}
-      
     </script>
 
 
