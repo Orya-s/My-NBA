@@ -7,6 +7,7 @@ const nbaRender = function() {
 
     function renderPlayers(players) {
         $(".cards-container").empty();
+        $(".title-container").empty();
 
         const source = $('#cards-template').html();
         const template = Handlebars.compile(source);
@@ -18,20 +19,21 @@ const nbaRender = function() {
         for (const player of metaData) {
 			let elementToRender = `#${player.id}`
 			// let newHTML = `<img src=${player.img} onerror="this.src='https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png';" alt="not found" />`
-		
-            let newHTML = `<img src=${player.img} onerror="this.src='https://ih1.redbubble.net/image.1756031065.8725/flat,128x,075,f-pad,128x128,f8f8f8.jpg';" alt="not found" />`
-			$(elementToRender).empty()
+            // let newHTML = `<img src=${player.img} width="350" height="254" onerror="this.src='https://www.edigitalagency.com.au/wp-content/uploads/NBA-logo-png.png';" alt="not found" />`
+            let newHTML = `<img src=${player.img} onerror="this.src='https://www.edigitalagency.com.au/wp-content/uploads/NBA-logo-png.png';" alt="not found" />`
+			
+            $(elementToRender).empty()
 			$(elementToRender).append(newHTML)
 		}
     }
 
     function headline(year, team) {
-        $(".cards-container").prepend(`<div> Showing results for team <b>${team}</b> - <b>${year}</b> </div> <br>`)
+        $(".title-container").prepend(`<div> Showing results for team <b>${team}</b> - <b>${year}</b> </div> <br>`)
     }
 
     function rendCards(res) {
         renderPlayers(res)  
-        renderPictures(res.metaData)
+        renderPictures(res.players)
     }
 
     return {
