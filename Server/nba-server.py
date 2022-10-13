@@ -13,12 +13,6 @@ def root():
     return {"message":"Server is up and running"}
 
 
-@app.get('/favicon.ico', include_in_schema=False)
-async def favicon():
-    path = "C:/Users/Rent/Desktop/NBA/Client/static/favicon.ico"
-    return FileResponse(path)
-    # return FileResponse(path=file_path, headers={"Content-Disposition": "attachment; filename=" + file_name})
-
 
 @app.get('/search')     # ex - localhost:8000/search?teamName=warriors&year=2018
 def get_players(response: Response, teamName="warriors", year="2018"):
