@@ -14,8 +14,7 @@ const nbaData = function() {
     async function getData() {
         let nbaPromise = players.getData() 
         return await Promise.all([nbaPromise]).then(function(res) {
-            console.log(res[0]);    ///////////
-            return {metaData: res[0]}
+            return {players: res[0]}
         }) 
     }
 
