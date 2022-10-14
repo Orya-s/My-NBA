@@ -13,17 +13,15 @@ def root():
     return {"message":"Server is up and running"}
 
 
-
-@app.get('/search')     # ex - localhost:8000/search?teamName=warriors&year=2018
-def get_players(response: Response, teamName="warriors", year="2018"):
+@app.get('/search')     # ex - localhost:8000/search?teamName=warriors&year=2018&isActive=true
+def get_players(response: Response, teamName="warriors", year="2018", active=""):
     response.headers['Access-Control-Allow-Origin'] = "*"
-    data = NbaAPI(teamName, year).get_data()
+    data = NbaAPI(teamName, year, active).get_data()
     
     print("server running")
     return data
 
 
-# example - localhost:8000/static/index.html
 app.mount("/", StaticFiles(directory="../Client",html=True), name="Client")
 
 
