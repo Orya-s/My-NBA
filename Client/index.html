@@ -14,9 +14,13 @@
     
     <div class="header">
       <div class="text-input">
-        <input id="teamInput" type="text" placeholder="TEAM">
-        <input id="yearInput" list="years" placeholder="YEAR">
+        <input class="players-filter" id="teamInput" type="text" placeholder="TEAM">
+        <input class="players-filter" id="yearInput" list="years" placeholder="YEAR">
       </div>
+      <label class="container">Active Players
+        <input id="checkbox" type="checkbox" value="false">
+        <span class="checkmark"></span>
+      </label>
       <button id="getTeamBtn" class="glow-on-hover">GET TEAM</button>
     </div>
 
