@@ -10,11 +10,12 @@ teams_id = {
 
 
 class NbaAPI(API):
-    def __init__(self, team_name, year):
+    def __init__(self, team_name, year, is_active):
         self.url = f"http://data.nba.net/10s/prod/v1/{year}/players.json"
         super().__init__(self.url)
         self.team = teams_id.get(team_name, None)
         self.year = year
+        self.is_active = is_active
         self.headers = {"Content-Type": "application/json"}
         
     
@@ -31,7 +32,8 @@ class NbaAPI(API):
                     "position":player["pos"],
                     "img": ImgAPI(player["lastName"], player["firstName"]).url
                     }
-                    for player in leagues[league] if bool(player["isActive"]) == True and player["teamId"] == self.team]
+                    for player in leagues[league] 
+                    if (bool(self.is_active != "true") or bool(player["isActive"]) == True) and player["teamId"] == self.team]
             
             for i in range(len(players)):
                 players[i]["id"]= f"card{i}"
