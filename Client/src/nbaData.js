@@ -7,8 +7,8 @@ const nbaData = function() {
     
     let players; 
 
-    function init(year, team) {
-        players = new MetaDataApi(year, team)
+    function init(year, team, active) {
+        players = new MetaDataApi(year, team, active)
     }
 
     async function getData() {

@@ -9,6 +9,7 @@ const rendPage = nbaRender()
 $("#getTeamBtn").on("click", function() {
     const year = $("#yearInput").val()
     const team = $("#teamInput").val()
+    const active = $('#checkbox').val()
     console.log(team + " " + year);     //////////
     
     if (team == "") {
@@ -16,7 +17,7 @@ $("#getTeamBtn").on("click", function() {
         alert("Please enter a team name!")
     }
     else {
-        nbaPlayers.init(year, team);
+        nbaPlayers.init(year, team, active);
         nbaPlayers.getData().then((res) => {
             cleanInput()
             rendPage.rendCards(res)
@@ -30,3 +31,18 @@ const cleanInput = function() {
     $("#yearInput").val("")
     $("#teamInput").val("")
 }
+
+
+$("#checkbox").on('change', function() {
+    if ($(this).is(':checked')) {
+      $(this).attr('value', 'true');
+    } 
+    else {
+      $(this).attr('value', '');
+    }
+    console.log("Checkbox updated value: " + $('#checkbox').val());
+});
+
+// $(".cards").on("click", ".dream-btn", function() {
+
+// })
