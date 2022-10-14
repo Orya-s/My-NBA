@@ -83,9 +83,6 @@ img{
     padding: 10px 10px 10px 100px;
     transition: all 0.1s ease-out;    
 }
-/* input::placeholder {
-    text-align: left;
-} */
 
 
 .players-filter + label{
@@ -187,11 +184,11 @@ img{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-  }
+}
 
-  
 
 /*button*/
+
 .glow-on-hover {
     width: 20%;
     height: 40px;
@@ -255,12 +252,3 @@ img{
 }
   
 
-
-/* The switch - the box around the slider */
-/* .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-} */
-    

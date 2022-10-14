@@ -18,8 +18,6 @@ const nbaRender = function() {
     function renderPictures(metaData) {
         for (const player of metaData) {
 			let elementToRender = `#${player.id}`
-			// let newHTML = `<img src=${player.img} onerror="this.src='https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png';" alt="not found" />`
-            // let newHTML = `<img src=${player.img} width="350" height="254" onerror="this.src='https://www.edigitalagency.com.au/wp-content/uploads/NBA-logo-png.png';" alt="not found" />`
             let newHTML = `<img src=${player.img} onerror="this.src='https://www.edigitalagency.com.au/wp-content/uploads/NBA-logo-png.png';" alt="not found" />`
 			
             $(elementToRender).empty()
