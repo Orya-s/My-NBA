@@ -14,7 +14,7 @@ def root():
 
 
 @app.get('/search')     # ex - localhost:8000/search?teamName=warriors&year=2018&isActive=true
-def get_players(response: Response, teamName="warriors", year="2018", active=""):
+def get_players(response: Response, teamName="warriors", year="2018", active="false"):
     response.headers['Access-Control-Allow-Origin'] = "*"
     data = NbaAPI(teamName, year, active).get_data()
     

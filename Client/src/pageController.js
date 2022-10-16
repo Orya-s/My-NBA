@@ -38,7 +38,7 @@ $("#checkbox").on('change', function() {
       $(this).attr('value', 'true');
     } 
     else {
-      $(this).attr('value', '');
+      $(this).attr('value', 'false');
     }
     console.log("Checkbox updated value: " + $('#checkbox').val());
 });
