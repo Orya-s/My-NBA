@@ -21,6 +21,7 @@
         <span class="checkmark"></span>
       </label>
       <button id="getTeamBtn" class="glow-on-hover">GET TEAM</button>
+      <button id="DreamTeamBtn" class="glow-on-hover">My Dream Team</button>
     </div>
 
     <datalist id="years">
@@ -50,6 +51,9 @@
           <div class="fullName"><b>{{this.fname}} {{this.lname}}</b></div>
           <div class="jersey">{{this.jersey}}</div>
           <div class="img" id={{this.id}}></div>
+          <div class="middle">
+            <button class="dream-btn add-dream">Add to Dream Team</button>
+          </div>
           <div class="position"><b>{{this.position}}</b></div>
         </div>
       {{/each}}

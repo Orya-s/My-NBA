@@ -40,9 +40,12 @@ $("#checkbox").on('change', function() {
     else {
       $(this).attr('value', 'false');
     }
-    console.log("Checkbox updated value: " + $('#checkbox').val());
 });
 
-// $(".cards").on("click", ".dream-btn", function() {
 
-// })
+$("body").on("click", ".dream-btn", function() {
+    $(this).toggleClass('add-dream');
+    $(this).toggleClass('remove-dream');
+    $(this).text($(this).text() == "Add to Dream Team" ? "Remove from Dream Team": "Add to Dream Team");
+})
+
