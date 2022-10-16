@@ -18,7 +18,7 @@ const nbaRender = function() {
     function renderPictures(metaData) {
         for (const player of metaData) {
 			let elementToRender = `#${player.id}`
-            let newHTML = `<img src=${player.img} onerror="this.src='https://www.edigitalagency.com.au/wp-content/uploads/NBA-logo-png.png';" alt="not found" />`
+            let newHTML = `<img src=${player.img} class="image" onerror="this.src='https://www.edigitalagency.com.au/wp-content/uploads/NBA-logo-png.png';" alt="not found" />`
 			
             $(elementToRender).empty()
 			$(elementToRender).append(newHTML)
