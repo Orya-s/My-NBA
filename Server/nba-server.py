@@ -2,10 +2,23 @@ from fastapi import FastAPI, Response
 import uvicorn
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from pydantic import BaseModel
 
 from nba_api import NbaAPI
 
 app = FastAPI()
+
+dream_team = {}
+
+class Player(BaseModel):
+    id:int 
+    fname:str
+    lname:str
+    jersey:int
+    position:str
+    isActive:bool
+    img:str
+    dreamTeam:bool
 
 
 @app.get('/sanity')
@@ -21,6 +34,29 @@ def get_players(response: Response, teamName="warriors", year="2018", active="fa
     print("server running")
     return data
 
+
+@app.post('/dreamTeam')
+def add_to_dream_team(data: Player):
+    global dream_team
+    data.dreamTeam = True
+    dream_team[data.id] = data
+    return data
+
+
+@app.get('/dreamTeam')
+def get_dream_team():
+    global dream_team
+    return list(dream_team.values())
+
+
+@app.delete('/dreamTeam/{id}')
+def remove_from_dream_team(id):
+    global dream_team
+    to_delete = dream_team[id]
+    dream_team.pop(id)
+    return to_delete
+    
+    
 
 app.mount("/", StaticFiles(directory="../Client",html=True), name="Client")
 
