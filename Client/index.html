@@ -34,6 +34,7 @@
     </datalist>
 
 
+
     <!-- Handlebars Containers -->
     <div class="cards-container">
     </div>
@@ -52,7 +53,11 @@
           <div class="jersey">{{this.jersey}}</div>
           <div class="img" id={{this.id}}></div>
           <div class="middle">
-            <button class="dream-btn add-dream">Add to Dream Team</button>
+            {{#if this.dreamTeam}}
+            <button class="dream-btn remove-dream" dreamTeam="true">Remove From Dream Team</button>
+            {{else}}
+            <button class="dream-btn add-dream" dreamTeam="false">Add to Dream Team</button>
+            {{/if}}
           </div>
           <div class="position"><b>{{this.position}}</b></div>
         </div>
@@ -68,6 +73,7 @@
     <script src="./src/api/ajaxCall.js"></script>
     <script src="./src/api/API.js"></script>
     <script src="./src/api/metadata.js"></script>
+    <script src="./src/api/dreamTeamApi.js"></script>
 
     <script src="./src/nbaData.js"></script>
     <script src="./src/pageView.js"></script>
