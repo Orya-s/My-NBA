@@ -44,8 +44,35 @@ $("#checkbox").on('change', function() {
 
 
 $("body").on("click", ".dream-btn", function() {
-    $(this).toggleClass('add-dream');
-    $(this).toggleClass('remove-dream');
-    $(this).text($(this).text() == "Add to Dream Team" ? "Remove from Dream Team": "Add to Dream Team");
+    const id = $(this).parent().prev().attr("id")
+    
+    if($(this).attr("dreamTeam") == "false") {
+        nbaPlayers.addToDreamTeam(id)
+        $(this).attr("dreamTeam", "true") 
+        $(this).removeClass('add-dream');
+        $(this).addClass('remove-dream');
+        $(this).text("Remove from Dream Team")
+    }
+    else {
+        nbaPlayers.removeFromDreamTeam(id)
+        $(this).attr("dreamTeam", "false") 
+        $(this).removeClass('remove-dream');
+        $(this).addClass('add-dream');
+        $(this).text("Add to Dream Team")
+    }
+    
+    // nbaPlayers.getDreamTeam().then((res) => {
+    //     cleanInput()
+    //     rendPage.rendDream(res)
+    //     // return res
+    // })
 })
 
+
+$("#DreamTeamBtn").on("click", function() {
+    nbaPlayers.getDreamTeam().then((res) => {
+        cleanInput()
+        rendPage.rendDream(res)
+        return res
+    })
+})
