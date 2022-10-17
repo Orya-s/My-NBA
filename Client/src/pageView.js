@@ -34,8 +34,13 @@ const nbaRender = function() {
         renderPictures(res.players)
     }
 
+    function rendDream(players) {
+        rendCards(players)
+    }
+
     return {
         headline,
-        rendCards
+        rendCards,
+        rendDream
     }
 }
