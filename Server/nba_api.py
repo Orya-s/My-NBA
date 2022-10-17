@@ -30,13 +30,14 @@ class NbaAPI(API):
                     "lname":player["lastName"],
                     "jersey":player["jersey"],
                     "position":player["pos"],
-                    "img": ImgAPI(player["lastName"], player["firstName"]).url
+                    "img": ImgAPI(player["lastName"], player["firstName"]).url,
+                    "dreamTeam": False
                     }
                     for player in leagues[league] 
                     if (bool(self.is_active != "true") or bool(player["isActive"]) == True) and player["teamId"] == self.team]
             
             for i in range(len(players)):
-                players[i]["id"]= f"card{i}"
+                players[i]["id"]= self.team + self.year + str(i)
             self.data = players
             return players 
         
