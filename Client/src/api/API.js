@@ -6,10 +6,9 @@ by default, all api calls are now a "GET" call.
 */
 class Api {
 
-    constructor(callerInteface, url = "", method = "GET"){
+    constructor(callerInteface, url = ""){
         this.callerInteface = callerInteface    //dependancy injection
         this.url = url
-        this.method = method
     }
     
     async callApi(attempts = 0){
@@ -20,12 +19,12 @@ class Api {
         })
     }
 
-    errorHandeler(method, attempts, error){
+    async errorHandeler(method, attempts, error){
         if(attempts++ < 3){
             console.warn(`error in : ${this.constructor.name} \n
                         Attampts left: ${3-attempts}\n
                         trying again...`);
-            return method(attempts)
+            return await method(attempts)
         }else{
             console.log("Server error");
             console.warn(error);
