@@ -11,12 +11,11 @@ app = FastAPI()
 dream_team = {}
 
 class Player(BaseModel):
-    id:int 
+    id:str 
     fname:str
     lname:str
-    jersey:int
+    jersey:str
     position:str
-    isActive:bool
     img:str
     dreamTeam:bool
 
@@ -38,7 +37,6 @@ def get_players(response: Response, teamName="warriors", year="2018", active="fa
 @app.post('/dreamTeam')
 def add_to_dream_team(data: Player):
     global dream_team
-    data.dreamTeam = True
     dream_team[data.id] = data
     return data
 
