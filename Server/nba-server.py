@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Response, status
 import uvicorn
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -35,9 +35,10 @@ def get_players(response: Response, teamName="warriors", year="2018", active="fa
 
 
 @app.post('/dreamTeam')
-def add_to_dream_team(data: Player):
+def add_to_dream_team(data: Player, response: Response):
     global dream_team
     dream_team[data.id] = data
+    response.status_code = status.HTTP_201_CREATED
     return data
 
 
@@ -48,12 +49,10 @@ def get_dream_team():
 
 
 @app.delete('/dreamTeam/{id}')
-def remove_from_dream_team(id):
+def remove_from_dream_team(id, response: Response):
     global dream_team
-    player_to_delete = dream_team[id]
-    player_to_delete.dreamTeam = False
     dream_team.pop(id)
-    return player_to_delete
+    response.status_code = status.HTTP_204_NO_CONTENT
     
     
 
