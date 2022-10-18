@@ -50,9 +50,10 @@ def get_dream_team():
 @app.delete('/dreamTeam/{id}')
 def remove_from_dream_team(id):
     global dream_team
-    to_delete = dream_team[id]
+    player_to_delete = dream_team[id]
+    player_to_delete.dreamTeam = False
     dream_team.pop(id)
-    return to_delete
+    return player_to_delete
     
     
 
