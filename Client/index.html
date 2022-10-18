@@ -4,7 +4,7 @@
     <title>My-Nba</title>
     <link href="./src/favicon.ico" rel="icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <link id="favicon" rel="icon" type="image/x-icon" href="static/favicon.ico"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css"/>
 
 </head>
@@ -49,17 +49,32 @@
     <script id="cards-template" type="text/x-handlebars-template">
       {{#each players}}
         <div class="cards">
-          <div class="fullName"><b>{{this.fname}} {{this.lname}}</b></div>
-          <div class="jersey">{{this.jersey}}</div>
-          <div class="img" id={{this.id}}></div>
-          <div class="middle">
-            {{#if this.dreamTeam}}
-            <button class="dream-btn remove-dream" dreamTeam="true">Remove From Dream Team</button>
-            {{else}}
-            <button class="dream-btn add-dream" dreamTeam="false">Add to Dream Team</button>
-            {{/if}}
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="fullName"><b>{{this.fname}} {{this.lname}}</b></div>
+                <div class="jersey">{{this.jersey}}</div>
+                <div class="img" id={{this.id}}></div>
+                <div class="middle">
+                  {{#if this.dreamTeam}}
+                  <button class="dream-btn remove-dream" dreamTeam="true">Remove From Dream Team</button>
+                  {{else}}
+                  <button class="dream-btn add-dream" dreamTeam="false">Add to Dream Team</button>
+                  {{/if}}
+                </div>
+                <div class="position">
+                  <b>{{this.position}}</b>
+                  <i style="font-size:24px" class="fa">&#xf080;</i>
+                </div>
+              </div>
+
+              <div class="flip-card-back">
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+              </div>
+            </div>
           </div>
-          <div class="position"><b>{{this.position}}</b></div>
         </div>
       {{/each}}
     </script>
@@ -68,7 +83,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script> -->
 
     <script src="./src/api/ajaxCall.js"></script>
     <script src="./src/api/API.js"></script>
