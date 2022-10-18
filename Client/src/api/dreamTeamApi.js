@@ -7,15 +7,5 @@ class DreamTeamApi extends Api {
         }
 		super(new AjaxCall(method, payload), url)
 	}
-
-	async getData() {
-        console.log("getting dream team - metadata call");
-		return await this.callApi()
-	}
-
-    async addPlayer() {
-		return await this.callApi()
-    }
-
  
 }
