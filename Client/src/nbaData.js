@@ -33,19 +33,17 @@ const nbaData = function() {
         let player = getPlayerById(playerId)
         player.dreamTeam = true
         let dreamTeamPlayers = new DreamTeamApi("POST", 0, player)
-        await dreamTeamPlayers.addPlayer() 
+        await dreamTeamPlayers.callApi() 
     }
 
     async function removeFromDreamTeam(playerId) {
-        let player = getPlayerById(playerId)
-        player.dreamTeam = false
-        let dreamTeamPlayers = new DreamTeamApi("DELETE", playerId, player)
-        await dreamTeamPlayers.addPlayer()
+        let dreamTeamPlayers = new DreamTeamApi("DELETE", playerId)
+        await dreamTeamPlayers.callApi()
     }
 
     async function getDreamTeam() {
         let dreamTeamPlayers = new DreamTeamApi()
-        let dreamPromise = dreamTeamPlayers.getData() 
+        let dreamPromise = dreamTeamPlayers.callApi() 
         return await Promise.all([dreamPromise]).then(function(res) {
             return {players: res[0]}
         })  
