@@ -6,7 +6,6 @@ class MetaDataApi extends Api {
 	}
 
 	async getData() {
-        console.log("performing metadata call");
 		return await this.callApi()
 	}
 }
