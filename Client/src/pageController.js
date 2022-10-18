@@ -5,12 +5,13 @@ it will fetch and load the data on the screen  */
 
 const nbaPlayers = nbaData()
 const rendPage = nbaRender()
+let inDream = false
 
 $("#getTeamBtn").on("click", function() {
+    inDream = false
     const year = $("#yearInput").val()
     const team = $("#teamInput").val()
     const active = $('#checkbox').val()
-    console.log(team + " " + year);     //////////
     
     if (team == "") {
         console.warn("team name is missing from input")
@@ -45,7 +46,7 @@ $("#checkbox").on('change', function() {
 
 $("body").on("click", ".dream-btn", function() {
     const id = $(this).parent().prev().attr("id")
-    
+
     if($(this).attr("dreamTeam") == "false") {
         nbaPlayers.addToDreamTeam(id)
         $(this).attr("dreamTeam", "true") 
@@ -59,17 +60,20 @@ $("body").on("click", ".dream-btn", function() {
         $(this).removeClass('remove-dream');
         $(this).addClass('add-dream');
         $(this).text("Add to Dream Team")
+
+        if (inDream) {
+            nbaPlayers.getDreamTeam().then((res) => {
+                cleanInput()
+                rendPage.rendDream(res)
+                return res
+            })
+        }
     }
-    
-    // nbaPlayers.getDreamTeam().then((res) => {
-    //     cleanInput()
-    //     rendPage.rendDream(res)
-    //     // return res
-    // })
 })
 
 
 $("#DreamTeamBtn").on("click", function() {
+    inDream = true
     nbaPlayers.getDreamTeam().then((res) => {
         cleanInput()
         rendPage.rendDream(res)
