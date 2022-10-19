@@ -80,3 +80,18 @@ $("#DreamTeamBtn").on("click", function() {
         return res
     })
 })
+
+
+$("body").on("click", ".fa", function() {
+    $(this).siblings(".modal").css("display", "block");
+    const fullName = $(this).parent().siblings(".fullName").text().trim().split(/\s+/);
+    $(".stats-container").empty();
+    nbaPlayers.getStats(fullName[1], fullName[0]).then((res) => { 
+        rendPage.rendStats(res)
+        return res
+    })
+})
+// close stats
+$("body").on("click", ".close", function() {
+    $(this).closest(".modal").css("display", "none");
+})
