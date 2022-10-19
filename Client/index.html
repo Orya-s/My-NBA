@@ -42,44 +42,48 @@
     <div class="title-container">
     </div>
     
-
     
     <!-- Handlebars Templates -->
     
     <script id="cards-template" type="text/x-handlebars-template">
       {{#each players}}
         <div class="cards">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="fullName"><b>{{this.fname}} {{this.lname}}</b></div>
-                <div class="jersey">{{this.jersey}}</div>
-                <div class="img" id={{this.id}}></div>
-                <div class="middle">
-                  {{#if this.dreamTeam}}
-                  <button class="dream-btn remove-dream" dreamTeam="true">Remove From Dream Team</button>
-                  {{else}}
-                  <button class="dream-btn add-dream" dreamTeam="false">Add to Dream Team</button>
-                  {{/if}}
-                </div>
-                <div class="position">
-                  <b>{{this.position}}</b>
-                  <i style="font-size:24px" class="fa">&#xf080;</i>
-                </div>
-              </div>
-
-              <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
+          <div class="fullName"><b>{{this.fname}} {{this.lname}}</b></div>
+          <div class="jersey">{{this.jersey}}</div>
+          <div class="img" id={{this.id}}></div>
+          <div class="middle">
+            {{#if this.dreamTeam}}
+            <button class="dream-btn remove-dream" dreamTeam="true">Remove From Dream Team</button>
+            {{else}}
+            <button class="dream-btn add-dream" dreamTeam="false">Add to Dream Team</button>
+            {{/if}}
+          </div>
+          <div class="position">
+            <b>{{this.position}}</b>
+            <i style="font-size:24px" class="fa">&#xf080;</i>
+            <div class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p><b>{{fname}} {{lname}}</b></p>
+                <div class="stats-container"></div>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       {{/each}}
     </script>
 
 
+    <script id="stats-template" type="text/x-handlebars-template">
+      <div class="stats">
+        <div>Games Played -  {{this.gamesPlayed}}</div>
+        <div>Minutes Per Game -  {{this.minutesPerGame}}</div>
+        <div>Points Per Game -  {{this.pointsPerGame}}</div>
+        <div>Player Efficiency Rating -  {{this.playerEfficiencyRating}}</div>
+      </div>
+    </script>
+
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -88,6 +92,7 @@
     <script src="./src/api/API.js"></script>
     <script src="./src/api/metadata.js"></script>
     <script src="./src/api/dreamTeamApi.js"></script>
+    <script src="./src/api/statsApi.js"></script>
 
     <script src="./src/nbaData.js"></script>
     <script src="./src/pageView.js"></script>
