@@ -39,7 +39,6 @@ const nbaRender = function() {
     }
 
     function rendStats(stats) {
-        // $(".stats-container").empty();
         const source = $('#stats-template').html();
         const template = Handlebars.compile(source);
         const newHTML = template(stats.stats); 

@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Response, status
 import uvicorn
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from nba_api import NbaAPI
@@ -30,7 +29,6 @@ def root():
 def get_players(response: Response, teamName="warriors", year="2018", active="false"):
     response.headers['Access-Control-Allow-Origin'] = "*"
     data = NbaAPI(teamName, year, active).get_data()
-    
     print("server running")
     return data
 
