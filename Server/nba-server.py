@@ -5,6 +5,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from nba_api import NbaAPI
+from stats_api import StatsAPI
 
 app = FastAPI()
 
@@ -54,6 +55,12 @@ def remove_from_dream_team(id, response: Response):
     dream_team.pop(id)
     response.status_code = status.HTTP_204_NO_CONTENT
     
+
+@app.get('/stats/{lname}/{fname}')
+def get_stats(response: Response, lname, fname):
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    data = StatsAPI(lname, fname).proccess_data()
+    return data
     
 
 app.mount("/", StaticFiles(directory="../Client",html=True), name="Client")
