@@ -38,9 +38,18 @@ const nbaRender = function() {
         rendCards(players)
     }
 
+    function rendStats(stats) {
+        // $(".stats-container").empty();
+        const source = $('#stats-template').html();
+        const template = Handlebars.compile(source);
+        const newHTML = template(stats.stats); 
+        $('.stats-container').append(newHTML);
+    }
+
     return {
         headline,
         rendCards,
-        rendDream
+        rendDream,
+        rendStats
     }
 }
