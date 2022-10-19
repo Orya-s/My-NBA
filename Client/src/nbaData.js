@@ -49,12 +49,21 @@ const nbaData = function() {
         })  
     }
 
+    async function getStats(lname, fname) {  
+        let playerStats = new StatsApi(lname, fname)
+        let statsPromise = playerStats.getData() 
+        return await Promise.all([statsPromise]).then(function(res) {
+            return {stats: res[0]}
+        })  
+    }
+
     return {
         init,
         getData,
         addToDreamTeam,
         getPlayerById,
         removeFromDreamTeam,
-        getDreamTeam
+        getDreamTeam,
+        getStats
     }
 }
