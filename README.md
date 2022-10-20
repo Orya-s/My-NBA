@@ -17,4 +17,5 @@ The player card contains:
 * Add to Dream Team button - shown when hovering over the card
 
 
+<img width="302" alt="image" src="https://user-images.githubusercontent.com/61458890/196913892-04bd573f-00c1-4d0b-a05f-4bf19a3cf68f.png">
 
