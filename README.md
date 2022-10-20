@@ -26,7 +26,7 @@ The player card contains:
 
 ### To Run:
 1. Download the zipped folder or clone the repository
-2. Open your terminal (/Command line /PowerShell) and navigate to the Server folder
+2. Open your terminal ( / Command line / PowerShell) and navigate to the Server folder
 3. In the terminal run: 
 ```
 python nba-server.py
