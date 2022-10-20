@@ -2,7 +2,7 @@
 
 My NBA is a full stack project that displays NBA players cards, based on team name and year. In addition, the user can create a 'dream team' by choosing his favorite players from various teams. The user can edit the dream team and diaplay it on the screen.
 
-The server uses a couple of API to gather the information about the players.
+The server uses a couple of APIs to gather the information about the players.
 
 This project includes MVC architecture, OOP, Handlebars and Grid design.
 
