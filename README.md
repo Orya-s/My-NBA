@@ -33,6 +33,3 @@ python nba-server.py
 ```
 4. Open your browser of choise and in the address section write- localhost:8000
 
-
-### Project website
-
